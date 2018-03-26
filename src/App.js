@@ -33,9 +33,10 @@ class App extends Component {
 
   onGetRawData() {
     this.setState({ isLoading: true });
-    dataService.getData()
+    dataService
+      .getData()
       .then(strings => this.setState({ rawData: strings }))
-      .finally(() => this.setState({ isLoading: false }))
+      .finally(() => this.setState({ isLoading: false }));
   }
 
   onModifyData() {
@@ -52,11 +53,20 @@ class App extends Component {
   }
 
   onSave() {
-    // TODO: implement me
+    const { rawData, modifiedData } = this.state;
+
+    this.setState({ isLoading: true });
+    dataService
+      .saveData({ rawData, modifiedData })
+      .finally(() => this.setState({ isLoading: false }));
   }
 
   onLoad() {
-    // TODO: implement me
+    this.setState({ isLoading: true });
+    dataService
+      .loadData()
+      .then(({ rawData, modifiedData }) => this.setState({ rawData, modifiedData }))
+      .finally(() => this.setState({ isLoading: false }));
   }
 
   render() {
