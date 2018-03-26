@@ -1,5 +1,7 @@
 # TRANZZO's Test Task
 
+**STABLE VERSION:** `v1.0.0`
+
 ### install server's packages
 ```
 $ cd server
