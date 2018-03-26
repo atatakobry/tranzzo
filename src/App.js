@@ -20,36 +20,31 @@ class App extends Component {
       isLoading: false
     };
 
-    this.onGetRawData = this.onGetRawData.bind(this);
-    this.onModifyData = this.onModifyData.bind(this);
+    this.onRawDataGet = this.onRawDataGet.bind(this);
+    this.onRawDataModify = this.onRawDataModify.bind(this);
     this.onClearAll = this.onClearAll.bind(this);
     this.onSave = this.onSave.bind(this);
     this.onLoad = this.onLoad.bind(this);
   }
 
   componentDidMount() {
-    this.onGetRawData();
+    this.onRawDataGet();
   }
 
-  onGetRawData() {
+  onRawDataGet() {
     this.setState({ isLoading: true });
     dataService
       .getData()
-      .then(strings => this.setState({ rawData: strings }))
+      .then(rawData => this.setState({ rawData, modifiedData: [] }))
       .finally(() => this.setState({ isLoading: false }));
   }
 
-  onModifyData() {
-    this.setState(({ rawData }) => ({
-      modifiedData: rawData.map(string => modify(string))
-    }));
+  onRawDataModify() {
+    this.setState(({ rawData }) => ({ modifiedData: rawData.map(string => modify(string)) }));
   }
 
   onClearAll() {
-    this.setState({
-      rawData: [],
-      modifiedData: []
-    });
+    this.setState({ rawData: [], modifiedData: [] });
   }
 
   onSave() {
@@ -83,8 +78,8 @@ class App extends Component {
             <Controls
               rawData={rawData}
               modifiedData={modifiedData}
-              onGetRawData={this.onGetRawData}
-              onModifyData={this.onModifyData}
+              onRawDataGet={this.onRawDataGet}
+              onRawDataModify={this.onRawDataModify}
               onClearAll={this.onClearAll}
               onSave={this.onSave}
               onLoad={this.onLoad}

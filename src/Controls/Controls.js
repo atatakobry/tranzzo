@@ -3,7 +3,7 @@ import { Row, Col, Button } from 'reactstrap';
 
 import styles from './Controls.modules.css';
 
-function Controls({ rawData, modifiedData, onGetRawData, onModifyData, onClearAll, onSave, onLoad }) {
+function Controls({ rawData, modifiedData, onRawDataGet, onRawDataModify, onClearAll, onSave, onLoad }) {
   const isRawDataEmpty = !rawData || !rawData.length;
   const isAllDataEmpty = (!rawData || !rawData.length) && (!modifiedData || !modifiedData.length);
 
@@ -16,7 +16,7 @@ function Controls({ rawData, modifiedData, onGetRawData, onModifyData, onClearAl
           <Button className={styles.button}
                   color="primary"
                   size="sm"
-                  onClick={onGetRawData}
+                  onClick={onRawDataGet}
           >
             Get raw data
           </Button>
@@ -25,7 +25,7 @@ function Controls({ rawData, modifiedData, onGetRawData, onModifyData, onClearAl
                   color="success"
                   size="sm"
                   disabled={isRawDataEmpty}
-                  onClick={onModifyData}
+                  onClick={onRawDataModify}
           >
             Modify data
           </Button>
@@ -49,7 +49,7 @@ function Controls({ rawData, modifiedData, onGetRawData, onModifyData, onClearAl
                   disabled={isAllDataEmpty}
                   onClick={onSave}
           >
-            🔼 Save all to server
+            <span role="img" aria-label="arrow">🔼</span>Save all to server
           </Button>
 
           <Button className={styles.button}
@@ -57,7 +57,7 @@ function Controls({ rawData, modifiedData, onGetRawData, onModifyData, onClearAl
                   size="sm"
                   onClick={onLoad}
           >
-            🔽 Load all from server
+            <span role="img" aria-label="arrow">🔽</span>Load all from server
           </Button>
         </Col>
       </Row>
