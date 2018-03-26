@@ -8,6 +8,12 @@
   margin-bottom: 20px;
 }
 
+.placeholder {
+  font-size: 14px;
+  line-height: 1.2;
+  color: gray;
+}
+
 .string {
   position: relative;
   font-size: 14px;

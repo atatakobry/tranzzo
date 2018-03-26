@@ -1,7 +1,7 @@
+import dataService from './dataService';
 import modify from './modify';
-import stringsService from './stringsService';
 
 export {
-  modify,
-  stringsService
+  dataService,
+  modify
 };

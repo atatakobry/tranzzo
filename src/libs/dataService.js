@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export default {
-  getStrings() {
+  getData() {
     return axios
       .get('https://baconipsum.com/api/', {
         params: {
