@@ -1,0 +1,29 @@
+.component {
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #000;
+}
+
+.title {
+  margin-bottom: 20px;
+}
+
+.placeholder {
+  font-size: 14px;
+  line-height: 1.2;
+  color: gray;
+}
+
+.string {
+  position: relative;
+  font-size: 14px;
+  line-height: 1.2;
+  padding-left: 25px;
+  word-break: break-all;
+}
+.string:before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  content: "—";
+}
